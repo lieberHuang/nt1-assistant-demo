@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f5f9fc">
+  <title>NT1阵发性睡病助手 · 功能演示</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="desktop-layout">
+    <aside class="notes-panel" id="notesPanel" aria-label="演示说明编辑区">
+      <div class="panel-heading"><div><span class="eyebrow">KnowDrug · 患者服务</span><h2>演示说明</h2></div><span class="notes-icon" aria-hidden="true">✎</span></div>
+      <p class="panel-desc">记录演示要点、需求补充或评审意见。</p>
+      <label class="sr-only" for="notesInput">填写演示说明</label>
+      <textarea id="notesInput" maxlength="20000" placeholder="在这里写入说明…&#10;&#10;例如：&#10;· 本次需要演示的流程&#10;· 当前场景的说明&#10;· 需要确认的业务规则" spellcheck="false"></textarea>
+      <div class="notes-meta"><span id="notesStatus" role="status">正在读取说明…</span><span id="notesCount">0 / 20000</span></div>
+      <div class="notes-actions"><button class="primary-button" id="saveNotesButton">保存说明</button><button class="secondary-button" id="exportNotesButton">导出文本</button></div>
+      <button class="secondary-button clear-chat-button" id="clearChatButton" type="button">清空聊天记录</button>
+      <p class="notes-storage-hint" id="notesStorageHint">通过本地服务保存至项目目录；直接打开文件时保存到当前浏览器。</p>
+      <a class="business-review-link" href="业务评审.md" target="_blank" rel="noopener">查看业务评审与待确认项 ↗</a>
+    </aside>
+    <div class="device-stage" id="deviceStage">
+    <div class="device-viewport">
+    <main class="device" id="device">
+      <div class="phone-statusbar" aria-hidden="true"><span>9:41</span><div class="dynamic-island"></div><div class="phone-status-icons"><svg viewBox="0 0 24 16"><path d="M2 14v-3m5 3V8m5 6V5m5 9V2"/><path d="M21 3h1v9h-1"/></svg><span class="phone-battery"></span></div></div>
+      <header class="app-header">
+        <div class="app-logo" id="appLogo"><img src="assets/mianbao-doctor.webp" alt="眠宝"></div>
+        <div class="header-copy"><h2 id="headerTitle">NT1阵发性睡病助手</h2><span id="headerBadge">已确诊患者通道</span></div>
+        <button class="avatar" id="profileButton" aria-label="打开我的服务"><svg viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="22" fill="#E5ECFF"/><circle cx="22" cy="17" r="7" fill="#7E94CF"/><path d="M9 40c0-10 5-15 13-15s13 5 13 15" fill="#4266B2"/></svg></button>
+      </header>
+      <section class="app-body" id="appBody" aria-label="患者服务内容"></section>
+      <div class="chat-bottom" id="chatBottom">
+        <div class="conversation-actions" id="conversationActions" aria-label="快捷服务，可左右滑动" hidden><button id="paymentFloat" class="conversation-action"></button><button class="conversation-action" data-action="recordJourney">记录病程</button><button class="conversation-action" data-action="medications">用药记录</button><button class="conversation-action" data-action="call">真人客服</button></div>
+        <div id="composerContext" class="composer-context" hidden></div>
+        <div id="composerTools" class="composer-tools"></div>
+        <input id="composerImageInput" type="file" accept="image/*" hidden>
+        <form class="composer" id="chatForm">
+          <label class="sr-only" for="chatInput">输入您的问题</label>
+          <input id="chatInput" autocomplete="off" placeholder="咨询用药、疾病或创新支付…" maxlength="2000">
+          <button class="send-button" type="submit" aria-label="发送问题"></button>
+        </form>
+      </div>
+      <div class="modal-root" id="modalRoot"></div>
+      <div class="toast" id="toast" role="status" hidden></div>
+      <button class="mobile-demo-button" id="mobileDemoButton" aria-label="打开演示场景">演示</button>
+    </main>
+    </div>
+    <div class="device-caption">iPhone 17 · 402 × 874 模拟视口 <span id="deviceScaleLabel"></span></div>
+    </div>
+    <aside class="demo-panel" id="demoPanel">
+      <div class="panel-heading"><div><span class="eyebrow">交互演示</span><h2>演示场景</h2></div><span class="demo-pill">DEMO</span></div>
+      <p class="panel-desc">切换患者状态，查看创新支付入口和对应流程。</p>
+      <label class="control-label" for="enrollmentSelect">患者当前状态</label>
+      <select id="enrollmentSelect">
+        <optgroup label="入组前"><option value="unsubmitted">未提交入组资料</option><option value="supplement">材料待补充</option><option value="enrollReview">入组审核中</option><option value="enrollRejected">入组审核被驳回</option></optgroup>
+        <optgroup label="入组后"><option value="noApplication">已入组 · 未申请</option><option value="orderRejected">申请被拒绝</option><option value="orderReview">申请审核中</option><option value="approved" selected>申请已通过</option></optgroup>
+      </select>
+      <label class="control-label" for="paymentTypeSelect">福利申请方式</label>
+      <div class="segmented" id="typeControl"><button data-type="direct" class="active">直付</button><button data-type="reimburse">后报销</button></div>
+      <div id="orderControls">
+        <label class="control-label" for="orderStatusSelect">最新订单状态</label>
+        <select id="orderStatusSelect"></select>
+        <p class="control-help" id="statusHelp"></p>
+      </div>
+      <div class="scenario-explanation" id="scenarioExplanation"></div>
+      <div class="panel-divider"></div>
+      <span class="control-label">一键体验</span>
+      <div class="demo-shortcuts">
+        <button data-demo="multi">多意图问答 <span>↗</span></button>
+        <button data-demo="ae">不良事件识别 <span>↗</span></button>
+        <button data-demo="unknown">超出意图范围 <span>↗</span></button>
+        <button data-demo="link">消息卡片进入订单 <span>↗</span></button>
+      </div>
+      <button class="reset-button" id="resetButton">重置演示数据</button>
+      
+    </aside>
+  </div>
+  <section class="compact-notes" id="compactNotes" hidden><button id="compactNotesButton">✎ 编辑演示说明</button></section>
+  <script src="workspace.js"></script>
+  <script src="care.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
