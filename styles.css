@@ -2075,3 +2075,30 @@ button:disabled { cursor: default; opacity: .55; }
 .med-entry-fields .form-field span { display: block; margin-bottom: 7px; color: #5e7795; font-size: 12px; }
 .med-entry-fields textarea { min-height: 72px; resize: vertical; }
 .med-entry-fields input, .med-entry-fields textarea { min-width: 0; width: 100%; }
+
+.voice-entry-tools { display: flex; gap: 8px; margin: 18px 0 10px; }
+.voice-entry-tools button { flex: 1; font-size: 12px; padding: 12px 6px; border-radius: 9px; }
+.voice-mic-button { display: flex; gap: 6px; align-items: center; justify-content: center; color: #fff; background: #086bff; }
+.voice-mic-button svg { width: 17px; height: 17px; }
+.voice-mic-button.listening { background: #eb5275; }
+.medical-voice-status { color: #7089a7; font-size: 12px; line-height: 1.8; margin-bottom: 14px; }
+.voice-transcript-field { display: block; margin-bottom: 12px; }
+.voice-transcript-field > span { display: block; margin-bottom: 8px; font-size: 12px; color: #577697; }
+.voice-transcript-field textarea { min-height: 115px; resize: vertical; line-height: 1.8; }
+.voice-organize-button { width: 100%; margin-bottom: 8px; }
+.voice-analysis { border: 1px solid #dce7f5; border-radius: 12px; padding: 15px; margin: 16px 0; background: #f9fbff; }
+.voice-result-title { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 12px; font-size: 14px; }
+.voice-demo-badge { flex-shrink: 0; border: 1px solid #d9e6ff; border-radius: 6px; color: #6987b8; font-size: 10px; padding: 3px 6px; background: #eff5ff; }
+.voice-summary { font-size: 13px; line-height: 1.9; white-space: pre-wrap; overflow-wrap: anywhere; color: #2c496b; }
+.voice-key { color: #ce304a; font-weight: 650; background: #fff0f1; border-radius: 3px; padding: 0 1px; }
+.voice-analysis h4 { margin: 17px 0 8px; font-size: 13px; }
+.voice-key-fields { margin: 0; }
+.voice-key-fields > div { padding: 8px 0; border-top: 1px solid #e8eef7; }
+.voice-key-fields dt { color: #778da8; font-size: 11px; margin-bottom: 5px; }
+.voice-key-fields dd { margin: 0; font-size: 12px; line-height: 1.8; color: #98a8ba; overflow-wrap: anywhere; }
+.voice-key-value { color: #ce304a; font-weight: 550; }
+.voice-original { color: #7c91ab; font-size: 12px; margin: 12px 0; }
+.voice-original summary { cursor: pointer; }
+.voice-original p { white-space: pre-wrap; margin-top: 9px; color: #536e8c; line-height: 1.8; }
+.voice-saved-title { display: flex; gap: 6px; align-items: center; color: #365c8b; font-weight: 600; font-size: 14px; }
+.voice-saved-title svg { width: 18px; height: 18px; }
