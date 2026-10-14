@@ -22,6 +22,8 @@
     phone:'<path d="M6 3h4l1 5-3 2c2 4 3 5 6 6l2-3 5 1v4c0 2-2 3-4 3C9 20 4 15 3 7c0-2 1-4 3-4Z"/>',
     doc:'<path d="M5 3h9l5 5v13H5V3ZM14 3v5h5M8 12h8M8 16h8"/>',
     check:'<path d="m5 12 4 4L19 6"/>',
+    camera:'<path d="M3 7h4l2-3h6l2 3h4v14H3V7Z"/><circle cx="12" cy="13" r="4"/>',
+    download:'<path d="M12 3v13m-5-5 5 5 5-5M4 17v4h16v-4"/>',
     upload:'<path d="M12 16V3m-5 5 5-5 5 5M4 15v6h16v-6"/>',
     pin:'<path d="M12 23S3 14 3 9a9 9 0 1 1 18 0c0 5-9 14-9 14Z"/><circle cx="12" cy="9" r="3"/>',
     location:'<circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="2"/><path d="M12 2v3m0 14v3M2 12h3m14 0h3"/>',
@@ -97,7 +99,7 @@
   }
   function feature(name,desc,kind,color,action){return `<button class="feature" data-action="${action}"><span class="feature-icon ${color}">${icon(kind)}</span><strong>${name}</strong><small>${desc}</small></button>`;}
   function homeMarkup(){
-    return `${care?.dailyMarkup()||''}<div class="feature-grid">${feature('创新支付','特药自付减免','card','','payment')}${feature('病历夹','文字语音图片','doc','green','records')}${feature('健康科普','阅读健康知识','layers','purple','education')}${feature('联系客服','一对一咨询','support','pink','call')}</div><h4 class="section-label">${icon('star')} 猜你想问</h4><button class="question-card" data-question="${DISEASE}有哪些表现？"><strong>${DISEASE}有哪些表现？</strong><small>热门咨询 · 疾病相关</small></button><button class="question-card" data-question="${DISEASE}用药有哪些注意事项？"><strong>${DISEASE}用药有哪些注意事项？</strong><small>热门咨询 · 用药相关</small></button><button class="question-card" data-question="如何申请创新支付福利？"><strong>如何申请创新支付福利？</strong><small>热门咨询 · 创新支付相关</small></button>`;
+    return `${care?.dailyMarkup()||''}<div class="feature-grid">${feature('创新支付','特药自付减免','card','','payment')}${feature('病历夹','图片拍照文件','doc','green','records')}${feature('健康科普','阅读健康知识','layers','purple','education')}${feature('联系客服','一对一咨询','support','pink','call')}</div><h4 class="section-label">${icon('star')} 猜你想问</h4><button class="question-card" data-question="${DISEASE}有哪些表现？"><strong>${DISEASE}有哪些表现？</strong><small>热门咨询 · 疾病相关</small></button><button class="question-card" data-question="${DISEASE}用药有哪些注意事项？"><strong>${DISEASE}用药有哪些注意事项？</strong><small>热门咨询 · 用药相关</small></button><button class="question-card" data-question="如何申请创新支付福利？"><strong>如何申请创新支付福利？</strong><small>热门咨询 · 创新支付相关</small></button>`;
   }
   function renderMessage(m){
     if(care&&m.kind)return care.message(m);

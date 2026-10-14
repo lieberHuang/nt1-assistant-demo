@@ -2056,3 +2056,22 @@ button:disabled { cursor: default; opacity: .55; }
 .aid-resume-card p { color: #738aaa; line-height: 1.7; }
 .aid-resume-actions { display: flex; gap: 10px; margin-top: 16px; }
 .aid-resume-actions button { flex: 1; padding: 11px 8px; font-size: 13px; }
+
+.checkin-complete { margin-top: 14px; font-size: 12px; color: #31977e; }
+.record-media-tools { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.record-media-tools button { justify-content: center; flex-direction: column; gap: 8px; padding: 14px 4px; font-size: 12px; }
+.record-media-tools svg { width: 22px; height: 22px; }
+.record-upload-empty { border: 1px dashed #d3e1f3; border-radius: 10px; padding: 28px 12px; text-align: center; color: #8ba3bd; font-size: 12px; margin: 15px 0; }
+.file-attachment { display: flex; width: 100%; align-items: center; gap: 10px; text-align: left; padding: 12px; border: 1px solid #dbe5f3; border-radius: 9px; background: #f8fbff; color: #365c86; margin: 6px 0; }
+.file-attachment > svg { width: 22px; height: 22px; flex-shrink: 0; }
+.file-attachment > span { flex: 1; min-width: 0; }
+.file-attachment strong { display: block; font-size: 12px; overflow-wrap: anywhere; }
+.file-attachment small { display: block; margin-top: 4px; color: #92a6be; font-size: 10px; }
+.record-camera-panel { padding: 10px; background: #f5f9ff; border: 1px solid #dae6f4; border-radius: 10px; margin: 12px 0; }
+.record-camera-panel video { display: block; width: 100%; border-radius: 8px; background: #152032; margin-bottom: 10px; }
+.record-camera-panel .button-row button { font-size: 12px; padding: 10px; }
+.med-entry-fields { margin-top: 16px; }
+.med-entry-fields .form-field { display: block; margin: 12px 0; }
+.med-entry-fields .form-field span { display: block; margin-bottom: 7px; color: #5e7795; font-size: 12px; }
+.med-entry-fields textarea { min-height: 72px; resize: vertical; }
+.med-entry-fields input, .med-entry-fields textarea { min-width: 0; width: 100%; }
