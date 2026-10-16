@@ -36,7 +36,7 @@
   const dateLabel = d => new Date(d).toLocaleDateString('zh-CN',{year:'numeric',month:'2-digit',day:'2-digit'}).replaceAll('/','.');
   const mask = name => name.length < 2 ? '*' : name.length === 2 ? name[0] + '*' : name[0] + '*'.repeat(name.length - 2) + name.at(-1);
   const seedSessions = () => [4,8,13,18,25,35,60].map((day,i) => {
-    const questions=['如何申请创新支付？',`${DISEASE}有哪些服务？`,'直付与后报销有什么区别？','怎么使用病历夹？','材料被驳回后怎么办？','如何联系人工客服？','怎么查看福利申请记录？'];
+    const questions=['如何申请创新支付？',`${DISEASE}有哪些服务？`,'直付与后报销有什么区别？','怎么使用病程记录？','材料被驳回后怎么办？','如何联系人工客服？','怎么查看福利申请记录？'];
     return {id:`sample-${i}`,updated:relativeDate(day),messages:[{role:'user',text:questions[i]},{role:'bot',parts:[{title:'演示服务说明',text:'您可以通过助手查询相关服务，并在创新支付进度卡中查看申请状态。具体内容以项目正式发布的信息为准。'}],intent:'创新支付相关'}]};
   });
   const seedOrders = () => [
@@ -100,7 +100,7 @@
   }
   function feature(name,desc,kind,color,action){return `<button class="feature" data-action="${action}"><span class="feature-icon ${color}">${icon(kind)}</span><strong>${name}</strong><small>${desc}</small></button>`;}
   function homeMarkup(){
-    return `${care?.dailyMarkup()||''}<div class="feature-grid">${feature('创新支付','特药自付减免','card','','payment')}${feature('病历夹','图片拍照文件','doc','green','records')}${feature('语音病历','语音转写<br>整理病历','mic','amber','voiceMedical')}${feature('健康科普','阅读健康知识','layers','purple','education')}${feature('联系客服','一对一咨询','support','pink','call')}</div><h4 class="section-label">${icon('star')} 猜你想问</h4><button class="question-card" data-question="${DISEASE}有哪些表现？"><strong>${DISEASE}有哪些表现？</strong><small>热门咨询 · 疾病相关</small></button><button class="question-card" data-question="${DISEASE}用药有哪些注意事项？"><strong>${DISEASE}用药有哪些注意事项？</strong><small>热门咨询 · 用药相关</small></button><button class="question-card" data-question="如何申请创新支付福利？"><strong>如何申请创新支付福利？</strong><small>热门咨询 · 创新支付相关</small></button>`;
+    return `${care?.dailyMarkup()||''}<div class="feature-grid">${feature('创新支付','特药自付减免','card','','payment')}${feature('病程记录','语音图片记录','doc','green','recordJourney')}${feature('健康科普','阅读健康知识','layers','purple','education')}${feature('联系客服','一对一咨询','support','pink','call')}</div><h4 class="section-label">${icon('star')} 猜你想问</h4><button class="question-card" data-question="${DISEASE}有哪些表现？"><strong>${DISEASE}有哪些表现？</strong><small>热门咨询 · 疾病相关</small></button><button class="question-card" data-question="${DISEASE}用药有哪些注意事项？"><strong>${DISEASE}用药有哪些注意事项？</strong><small>热门咨询 · 用药相关</small></button><button class="question-card" data-question="如何申请创新支付福利？"><strong>如何申请创新支付福利？</strong><small>热门咨询 · 创新支付相关</small></button>`;
   }
   function renderMessage(m){
     if(care&&m.kind)return care.message(m);
@@ -167,7 +167,7 @@
     if(drug){intents.push('药品相关');parts.push({title:'用药咨询',text:ae?'已识别您描述的用药后不适，正式系统会匹配安全性 FAQ，并将疑似不良事件交由专业人员评估。本演示可继续填写事件记录。':'已为您匹配“用药注意事项”演示 FAQ。正式版本会依据药企提供的知识库回答适应症、用法用量、漏服与储存等问题；当前不提供具体药品或剂量建议。'});}
     if(disease){intents.push('疾病相关');parts.push({title:`${DISEASE}咨询`,text:'已匹配疾病相关知识库分类。正式版本将展示经过确认的疾病基础知识、症状、检查与日常管理 FAQ。此处用于演示检索和回答流程，不能据此判断诊断或选择治疗方案。'});}
     if(payment){intents.push('创新支付相关');parts.push({title:'创新支付服务',text:/驳回|补充|材料/.test(text)?'演示流程：打开创新支付进度卡，查看材料审核结果及原因；若材料被驳回，可点击“重新上传”，补充资料后再次提交。':'演示流程：申请入组 → 提交资料 → 审核通过 → 申请直付或后报销福利。点击下方入口可查看您当前的状态。具体 eligibility、保障范围和金额以正式项目规则为准。'.replace('eligibility','参与条件')});actions.push({label:'查看创新支付进度',action:'payment'});}
-    if(pharmacy){intents.push('服务咨询');parts.push({title:'服务入口更新',text:'首页原直付药房入口已更新为病历夹，可上传图片、拍照和文件记录病程，也可使用独立的语音病历入口。直付申请中的签约药房信息仍保留在订单详情。'});actions.push({label:'打开病历夹',action:'records',icon:'doc'});}
+    if(pharmacy){intents.push('服务咨询');parts.push({title:'服务入口更新',text:'首页原直付药房入口已更新为病程记录，可通过同一卡片使用语音或上传图片，核对时间和总结后保存。直付申请中的签约药房信息仍保留在订单详情。'});actions.push({label:'打开病程记录',action:'records',icon:'doc'});}
     if(/客服|热线|人工/.test(text)){parts.push({title:'人工服务',text:'点击下方按钮可以查看客服联系方式。本演示未配置真实 400 号码。'});actions.push({label:'联系客服',action:'call',icon:'phone'});intents.push('服务咨询');}
     if(!parts.length)return {role:'bot',parts:[{text:`我可以协助您了解${DISEASE}、用药咨询与创新支付相关服务。这个问题暂不在当前知识库范围内，您可以换个相关问题，或联系人工客服。`}],actions:[{label:'联系人工客服',action:'call',icon:'phone'}],intent:'未知意图 · 固定回复'};
     return {role:'bot',parts,actions,intent:[...new Set(intents)].join(' + '),ae:ae?text:null};

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#f5f9fc">
   <title>NT1阵发性睡病助手 · 功能演示</title>
-  <link rel="stylesheet" href="styles.css?v=20261014-five-features">
+  <link rel="stylesheet" href="styles.css?v=20261016-journey-merged">
 </head>
 <body>
   <div class="desktop-layout">
@@ -31,12 +31,10 @@
       </header>
       <section class="app-body" id="appBody" aria-label="患者服务内容"></section>
       <div class="chat-bottom" id="chatBottom">
-        <div class="conversation-actions" id="conversationActions" aria-label="快捷服务，可左右滑动" hidden><button id="paymentFloat" class="conversation-action"></button><button class="conversation-action" data-action="recordJourney">记录病程</button><button class="conversation-action" data-action="voiceMedical">语音病历</button><button class="conversation-action" data-action="medications">用药记录</button><button class="conversation-action" data-action="call">真人客服</button></div>
+        <div class="conversation-actions" id="conversationActions" aria-label="快捷服务，可左右滑动" hidden><button id="paymentFloat" class="conversation-action"></button><button class="conversation-action" data-action="recordJourney">病程记录</button><button class="conversation-action" data-action="medications">用药记录</button><button class="conversation-action" data-action="call">真人客服</button></div>
         <div id="composerContext" class="composer-context" hidden></div>
         <div id="composerTools" class="composer-tools"></div>
         <input id="composerImageInput" type="file" accept="image/*" hidden>
-        <input id="composerCameraInput" type="file" accept="image/*" capture="environment" hidden>
-        <input id="composerFileInput" type="file" accept="image/*,.pdf,.doc,.docx,.txt" multiple hidden>
         <form class="composer" id="chatForm">
           <label class="sr-only" for="chatInput">输入您的问题</label>
           <input id="chatInput" autocomplete="off" placeholder="咨询用药、疾病或创新支付…" maxlength="2000">
@@ -79,9 +77,9 @@
     </aside>
   </div>
   <section class="compact-notes" id="compactNotes" hidden><button id="compactNotesButton">✎ 编辑演示说明</button></section>
-  <script src="workspace.js?v=20261014-five-features"></script>
-  <script src="voice.js?v=20261014-five-features"></script>
-  <script src="care.js?v=20261014-five-features"></script>
-  <script src="app.js?v=20261014-five-features"></script>
+  <script src="workspace.js?v=20261016-journey-merged"></script>
+  <script src="journey.js?v=20261016-journey-merged"></script>
+  <script src="care.js?v=20261016-journey-merged"></script>
+  <script src="app.js?v=20261016-journey-merged"></script>
 </body>
 </html>
